@@ -14,23 +14,29 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: radial-gradient(circle, #ffafbd, #ffc3a0);
+            /* তোমার ইমেজ লিংকটি নিচে দেওয়া হলো */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://raw.githubusercontent.com/sabbirhosain030-jpg/Pori-birthday-/main/1776375206684.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             font-family: 'Hind Siliguri', sans-serif;
             overflow: hidden;
         }
 
-        /* Floating Animation */
         .card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
             text-align: center;
-            max-width: 400px;
+            max-width: 350px;
+            width: 85%;
             position: relative;
             z-index: 10;
-            animation: float 3s ease-in-out infinite;
-            border: 2px solid #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: float 4s ease-in-out infinite;
         }
 
         @keyframes float {
@@ -38,46 +44,62 @@
             50% { transform: translateY(-20px); }
         }
 
-        h1 { color: #ff4b2b; margin-bottom: 10px; }
-        p { color: #555; line-height: 1.6; font-size: 1.1rem; }
-        .nickname { font-weight: 600; color: #ff1493; font-size: 1.5rem; display: block; margin-top: 10px; }
-
-        /* Wings Effect */
-        .card::before, .card::after {
-            content: '🧚‍♀️';
-            position: absolute;
-            font-size: 50px;
-            top: -30px;
-            opacity: 0.5;
+        h1 { 
+            color: #ffffff; 
+            margin-bottom: 15px; 
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        .card::before { left: -20px; transform: rotate(-20deg); }
-        .card::after { right: -20px; transform: rotate(20deg); }
 
-        /* Background Sparkles */
+        p { 
+            color: #f8f9fa; 
+            line-height: 1.7; 
+            font-size: 1.1rem; 
+            margin: 15px 0;
+            font-weight: 300;
+        }
+
+        .nickname { 
+            font-weight: 600; 
+            color: #ffeb3b; 
+            font-size: 1.6rem; 
+            display: block; 
+            margin-top: 10px;
+            text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+        }
+
+        /* Fairy Wings Icon */
+        .wings {
+            font-size: 50px;
+            display: block;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px gold);
+        }
+
+        /* Falling Snow/Magic Particles */
         .sparkle {
             position: absolute;
             background: white;
             border-radius: 50%;
             pointer-events: none;
-            animation: fly 5s linear infinite;
+            animation: fall linear infinite;
         }
 
-        @keyframes fly {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h1>শুভ জন্মদিন! 🎂</h1>
+        <div class="wings">🧚‍♀️</div>
+        <h1>শুভ জন্মদিন!</h1>
         <h2>ইয়াসমিন আক্তার অনু</h2>
-        <p>মানুষ বলে পরীরা নাকি স্বর্গে থাকে, কিন্তু আমি জানি আমার পরীটা আমার পাশেই আছে। তোমার হাসিতেই আমার পৃথিবী শান্ত হয়।</p>
+        <p>মানুষ বলে পরীরা নাকি স্বর্গে থাকে, কিন্তু আমি জানি আমার পরীটা আমার পাশেই আছে। তোমার এক চিমটি হাসিতেই আমার পুরো পৃথিবীটা জাদুকরী হয়ে ওঠে।</p>
         <span class="nickname">আমার মিষ্টি পরী ❤️</span>
-        <p style="font-size: 0.9rem; margin-top: 20px; color: #888;">— তোমার প্রিয় মানুষটির কাছ থেকে</p>
-    
+        <p style="font-size: 0.8rem; margin-top: 25px; color: #ddd; letter-spacing: 1px;">— ইতি, সাব্বির</p>
     </div>
 
     <script>
@@ -85,13 +107,13 @@
             const sparkle = document.createElement('div');
             sparkle.classList.add('sparkle');
             sparkle.style.left = Math.random() * 100 + 'vw';
-            sparkle.style.width = sparkle.style.height = Math.random() * 5 + 5 + 'px';
-            sparkle.style.animationDuration = Math.random() * 3 + 2 + 's';
+            sparkle.style.width = sparkle.style.height = Math.random() * 4 + 2 + 'px';
+            sparkle.style.animationDuration = Math.random() * 3 + 4 + 's';
+            sparkle.style.opacity = Math.random();
             document.body.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 5000);
+            setTimeout(() => sparkle.remove(), 7000);
         }
         setInterval(createSparkle, 150);
     </script>
 </body>
 </html>
-
